@@ -122,7 +122,7 @@ export default function Hero() {
             marginBottom: 32,
           }}
         >
-          THAT MOVE PEOPLE
+          THAT ARE IMPACTFUL
         </motion.h1>
 
         {/* Subtext */}
@@ -158,7 +158,7 @@ export default function Hero() {
             id="hero-book-btn"
             style={{ fontSize: "1rem", padding: "16px 44px" }}
           >
-            📅 Book Your Session Today
+            📅 Book OGU Today
           </a>
           <a href="#portfolio" className="btn-outline" style={{ fontSize: "1rem", padding: "16px 44px" }}>
             View Our Work

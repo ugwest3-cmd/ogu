@@ -1,5 +1,19 @@
 "use client";
 import Image from "next/image";
+import { Phone, Mail } from "lucide-react";
+
+// Social Icons SVGs
+const InstagramIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+);
+
+const TikTokIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+);
+
+const XIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16zM4 20l6.768 -6.768M13.232 10.768l6.768 -6.768"/></svg>
+);
 
 const quickLinks = [
   { label: "What We Do", href: "#services" },
@@ -10,14 +24,27 @@ const quickLinks = [
 ];
 
 const socials = [
-  { name: "Instagram", href: "https://instagram.com/ogumedia", label: "IG" },
-  { name: "TikTok", href: "https://tiktok.com/@ogumedia", label: "TK" },
-  { name: "X", href: "https://x.com/ogumedia", label: "X" },
+  { 
+    name: "Instagram", 
+    href: "https://instagram.com/ogumedia", 
+    icon: <InstagramIcon /> 
+  },
+  { 
+    name: "TikTok", 
+    href: "https://tiktok.com/@ogumedia", 
+    icon: <TikTokIcon /> 
+  },
+  { 
+    name: "X", 
+    href: "https://x.com/ogumedia", 
+    icon: <XIcon /> 
+  },
 ];
 
 export default function Footer() {
   return (
     <footer
+      id="contact"
       style={{
         background: "#030303",
         borderTop: "1px solid #111",
@@ -124,12 +151,18 @@ export default function Footer() {
             >
               Contact
             </h4>
-            <p style={{ color: "#555", fontSize: "0.875rem", marginBottom: 8 }}>
-              📞 0751579909 / 0786704521
-            </p>
-            <p style={{ color: "#555", fontSize: "0.875rem", marginBottom: 16 }}>
-              ✉️ ogugrup@gmail.com
-            </p>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
+              <Phone size={14} color="#FF6A00" />
+              <p style={{ color: "#555", fontSize: "0.875rem" }}>
+                0751579909 / 0786704521
+              </p>
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
+              <Mail size={14} color="#FF6A00" />
+              <p style={{ color: "#555", fontSize: "0.875rem" }}>
+                ogugrup@gmail.com
+              </p>
+            </div>
             {/* Social icons */}
             <div style={{ display: "flex", gap: 12 }}>
               {socials.map((s) => (
@@ -140,32 +173,33 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   aria-label={s.name}
                   style={{
-                    width: 36,
-                    height: 36,
+                    width: 38,
+                    height: 38,
                     border: "1px solid #222",
-                    borderRadius: "50%",
+                    borderRadius: "8px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     color: "#555",
-                    fontSize: "0.7rem",
-                    fontFamily: "Oswald, sans-serif",
-                    fontWeight: 700,
                     textDecoration: "none",
-                    transition: "all 0.2s",
+                    transition: "all 0.3s ease",
                   }}
                   onMouseEnter={(e) => {
                     const el = e.currentTarget as HTMLElement;
                     el.style.borderColor = "#FF6A00";
                     el.style.color = "#FF6A00";
+                    el.style.background = "rgba(255,106,0,0.05)";
+                    el.style.transform = "translateY(-3px)";
                   }}
                   onMouseLeave={(e) => {
                     const el = e.currentTarget as HTMLElement;
                     el.style.borderColor = "#222";
                     el.style.color = "#555";
+                    el.style.background = "transparent";
+                    el.style.transform = "translateY(0)";
                   }}
                 >
-                  {s.label}
+                  {s.icon}
                 </a>
               ))}
             </div>
@@ -186,7 +220,22 @@ export default function Footer() {
             © {new Date().getFullYear()} OGU Media. All Rights Reserved.
           </p>
           <p style={{ color: "#333", fontSize: "0.75rem" }}>
-            Built with ❤️ for storytelling
+            Designed by{" "}
+            <a 
+              href="https://linktr.ee/linksdigitalagency" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              style={{
+                color: "#666",
+                textDecoration: "none",
+                fontWeight: 600,
+                transition: "color 0.2s"
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "#FF6A00")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "#666")}
+            >
+              Links Digital Agency
+            </a>
           </p>
         </div>
       </div>

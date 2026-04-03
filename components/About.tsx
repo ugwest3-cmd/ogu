@@ -1,6 +1,19 @@
 "use client";
 import { motion } from "framer-motion";
 
+// Social Icons SVGs
+const InstagramIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+);
+
+const TikTokIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+);
+
+const XIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16zM4 20l6.768 -6.768M13.232 10.768l6.768 -6.768"/></svg>
+);
+
 export default function About() {
   return (
     <section
@@ -177,9 +190,9 @@ export default function About() {
           {/* Socials */}
           <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
             {[
-              { name: "Instagram", handle: "@ogumedia", href: "https://instagram.com/ogumedia", icon: "📷" },
-              { name: "TikTok", handle: "@ogumedia", href: "https://tiktok.com/@ogumedia", icon: "🎵" },
-              { name: "X", handle: "@ogumedia", href: "https://x.com/ogumedia", icon: "✕" },
+              { name: "Instagram", href: "https://instagram.com/ogumedia", icon: <InstagramIcon /> },
+              { name: "TikTok", href: "https://tiktok.com/@ogumedia", icon: <TikTokIcon /> },
+              { name: "X", href: "https://x.com/ogumedia", icon: <XIcon /> },
             ].map((social) => (
               <a
                 key={social.name}
@@ -189,18 +202,29 @@ export default function About() {
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  gap: 8,
+                  justifyContent: "center",
+                  width: 40,
+                  height: 40,
+                  borderRadius: "50%",
+                  background: "#0f0f0f",
+                  border: "1px solid #1a1a1a",
                   color: "#CCCCCC",
-                  textDecoration: "none",
-                  fontSize: "0.85rem",
-                  fontFamily: "Oswald, sans-serif",
-                  transition: "color 0.2s",
+                  transition: "all 0.3s ease",
                 }}
-                onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#FF6A00")}
-                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "#CCCCCC")}
+                onMouseEnter={(e) => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.color = "#FF6A00";
+                  el.style.borderColor = "#FF6A00";
+                  el.style.transform = "translateY(-3px)";
+                }}
+                onMouseLeave={(e) => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.color = "#CCCCCC";
+                  el.style.borderColor = "#1a1a1a";
+                  el.style.transform = "translateY(0)";
+                }}
               >
-                <span>{social.icon}</span>
-                {social.handle}
+                {social.icon}
               </a>
             ))}
           </div>

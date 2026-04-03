@@ -1,15 +1,16 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const clients = [
-  { name: "The Jovoc League", icon: "⚽" },
-  { name: "The Olive School", icon: "🏫" },
-  { name: "Clean Plug", icon: "🧹" },
-  { name: "Forest Park Buloba", icon: "🌳" },
+  { name: "The Jovoc League", logo: "/images/clients/jovoc_legea_logo.png" },
+  { name: "The Olive School", logo: "/images/clients/theoliveschool_logo.png" },
+  { name: "Clean Plug", logo: "/images/clients/clean_plug_logo.png" },
+  { name: "Forest Park Buloba", logo: "/images/clients/forest_park_logo.png" },
 ];
 
 // Duplicate for infinite marquee
-const allClients = [...clients, ...clients, ...clients];
+const allClients = [...clients, ...clients, ...clients, ...clients];
 
 export default function TrustSection() {
   return (
@@ -71,8 +72,8 @@ export default function TrustSection() {
             left: 0,
             top: 0,
             bottom: 0,
-            width: 120,
-            background: "linear-gradient(to right, #050505, transparent)",
+            width: 150,
+            background: "linear-gradient(to right, #050505 0%, transparent 100%)",
             zIndex: 2,
             pointerEvents: "none",
           }}
@@ -83,8 +84,8 @@ export default function TrustSection() {
             right: 0,
             top: 0,
             bottom: 0,
-            width: 120,
-            background: "linear-gradient(to left, #050505, transparent)",
+            width: 150,
+            background: "linear-gradient(to left, #050505 0%, transparent 100%)",
             zIndex: 2,
             pointerEvents: "none",
           }}
@@ -104,22 +105,47 @@ export default function TrustSection() {
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: 12,
-                padding: "20px 48px",
-                borderRight: "1px solid #1a1a1a",
+                gap: 16,
+                padding: "30px 60px",
+                borderRight: "1px solid #111",
                 whiteSpace: "nowrap",
+                transition: "background 0.3s ease",
               }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,106,0,0.02)")}
+              onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
             >
-              <span style={{ fontSize: "1.5rem" }}>{client.icon}</span>
+              <div style={{ position: "relative", width: 40, height: 40, overflow: "hidden" }}>
+                <Image
+                  src={client.logo}
+                  alt={client.name}
+                  fill
+                  style={{ 
+                    objectFit: "contain", 
+                    filter: "grayscale(1) brightness(0.8)",
+                    opacity: 0.6,
+                    transition: "all 0.4s ease" 
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.filter = "grayscale(0) brightness(1)";
+                    e.currentTarget.style.opacity = "1";
+                    e.currentTarget.style.transform = "scale(1.1)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.filter = "grayscale(1) brightness(0.8)";
+                    e.currentTarget.style.opacity = "0.6";
+                    e.currentTarget.style.transform = "scale(1)";
+                  }}
+                />
+              </div>
               <span
                 style={{
                   fontFamily: "Oswald, sans-serif",
-                  fontSize: "1.1rem",
-                  fontWeight: 600,
-                  color: "#444",
+                  fontSize: "1rem",
+                  fontWeight: 500,
+                  color: "#333",
                   letterSpacing: "0.08em",
                   textTransform: "uppercase",
-                  transition: "color 0.2s",
+                  transition: "color 0.3s",
                 }}
               >
                 {client.name}

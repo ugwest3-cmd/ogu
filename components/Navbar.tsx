@@ -106,7 +106,7 @@ export default function Navbar() {
             className="btn-orange"
             style={{ padding: "10px 24px", fontSize: 13 }}
           >
-            Book Now
+            Book OGU
           </a>
         </div>
 
@@ -204,7 +204,7 @@ export default function Navbar() {
               className="btn-orange"
               style={{ fontSize: "1.1rem", padding: "14px 48px" }}
             >
-              Book Now
+              Book OGU
             </motion.a>
           </motion.div>
         )}
